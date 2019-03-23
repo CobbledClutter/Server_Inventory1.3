@@ -1,0 +1,45 @@
+<div class="single">
+  <h2>Spare #<%= @spare.id %></h2>
+
+  <span>
+    <p class="label">Item Type</p>
+    <p class="value"><%= @spare.item_type %></p>
+  </span>
+
+  <span>
+    <p class="label">Description</p>
+    <p class="value"><%= @spare.description %></p>
+  </span>
+
+  <span>
+    <p class="label">Stock</p>
+    <p class="value"><%= @spare.stock %></p>
+  </span>
+
+  <span>
+    <p class="label">Date Delivered</p>
+    <p class="value"><%= @spare.date_delivered %></p>
+  </span>
+
+  <span>
+    <p class="label">Date Warranty</p>
+    <p class="value"><%= @spare.date_warranty %></p>
+  </span>
+
+  <span>
+    <p class="label">Balance</p>
+    <p class="value"><%= @spare.balance %></p>
+  </span>
+
+  <span>
+    <p class="label">Category</p>
+    <p class="value"><%= @spare.category %></p>
+  </span>
+
+  <h3>
+    <%= link_to 'Back', spares_path %>
+    <% if current_user %>
+      | <%= link_to 'Edit', edit_spare_path(@spare) %> <%= fa_icon("edit") %>
+    <% end %>
+  </h3>
+</div>

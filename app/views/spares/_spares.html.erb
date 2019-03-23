@@ -1,0 +1,25 @@
+<% spares.each do |spare| %>
+  <tr data-link="<%=spare_path(spare.id)%>">
+    <td onclick="redirect(this)"><%= spare.item_type %></td>
+    <td onclick="redirect(this)"><%= spare.description %></td>
+    <td onclick="redirect(this)"><%= spare.stock %></td>
+    <td onclick="redirect(this)"><%= spare.date_delivered %></td>
+    <td onclick="redirect(this)"><%= spare.date_warranty %></td>
+    <td onclick="redirect(this)"><%= spare.balance %></td>
+    <td onclick="redirect(this)"><%= spare.category %></td>
+
+    <% if current_user %>
+      <td class="actions">
+        <%= link_to fa_icon("edit"), edit_spare_path(spare) %>
+        <%= link_to fa_icon("trash"), spare, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+  <% end %>
+  </tr>
+<% end %>
+
+<script>
+  function redirect(element) {
+    var link = element.parentElement.getAttribute("data-link")
+    window.location.href = this.location.origin + link
+  }
+</script>

@@ -1,0 +1,58 @@
+<%= form_with(model: server, local: true, class: 'single', id: 'server_form') do |form| %>
+  <% if server.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(server.errors.count, "error") %> prohibited this server from being saved:</h2>
+
+      <ul>
+      <% server.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <h2><%= title %></h2>
+
+  <span>  
+    <%= form.label :host_name, class: 'label'%>
+    <%= form.text_field :host_name , class: 'value'%>
+  </span>
+
+  <span>
+    <%= form.label :machine_model, class: 'label'%>
+    <%= form.select :machine_model, Server::SERVER_LIST.collect{|i| i}, class: 'value'%>
+  </span>
+
+  <span>
+    <%= form.label :operating_system, class: 'label'%>
+    <%= form.text_field :operating_system, class: 'value'%>
+  </span>
+
+  <span>
+    <%= form.label :role, class: 'label'%>
+    <%= form.text_field :role, class: 'value'%>
+  </span>
+
+  <span>
+    <%= form.label :project, class: 'label'%>
+    <%= form.text_field :project, class: 'value'%>
+  </span>
+
+  <span>
+    <%= form.label :date_warranty, class: 'label'%>
+    <%= form.text_field :date_warranty, class: 'value'%>
+  </span>
+
+  <h3>
+    <%= link_to 'Back', servers_path %> |
+    <% if action_name == "edit"%>
+      <%= link_to 'New', new_server_path %> <%= fa_icon("plus") %> |
+    <% end %>
+    <%= link_to 'Save', "", onclick: "document.getElementById('server_form').submit()" %> <%= fa_icon("save") %>
+  </h3>
+<% end %>
+
+<script>
+  document.addEventListener('turbolinks:load', function () {
+    flatpickr('#server_date_warranty', {dateFormat: "M-d-Y"});
+  })
+</script>

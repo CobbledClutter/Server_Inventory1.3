@@ -1,0 +1,181 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require font-awesome
+ *= require flatpickr
+ */
+
+@import "font-awesome";
+
+$gray: #EAE9EE;
+$light-gray: #f6f6f8;
+$dark-gray: #8C8B8E;
+
+html {
+  font-family: Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body, p, h1, h2 { margin: 0; }
+a { text-decoration: none; color: #000; }
+
+.title a, .card input[type=submit] {
+  background-color: $gray;
+  padding: 5px;
+  min-width: 45px;
+  width: auto;
+  text-align: center;
+  margin: 2px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.head {
+  height: 45px;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: $gray;
+  div {
+    margin-left: 2px;
+    padding: 1em;
+    position: relative;
+    &:hover, &.active { background-color: #fff; }
+    &:last-child { margin-left: auto; }
+    &:hover ul.dropdown { display: block; }
+
+    ul.dropdown{
+      display: none;
+      background-color: $gray;
+      padding: 0;
+      position: absolute;
+      z-index: 999;
+      left: 0;
+      li {
+        display: block;
+        padding: 1em;
+        white-space: nowrap;
+        &:hover { background-color: #fff; }
+      }
+    }
+    
+  }
+}
+
+.single {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  h2 { 
+    margin: 5px;
+    text-align: left;
+  }
+  span {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    .label, .value { 
+      width: 50%;
+    }
+    .label { 
+      font-weight: bold;
+      text-align: right;
+      margin-right: 3px;
+    }
+    .value { 
+      text-align: left;
+      margin-left: 3px;
+    }
+  }
+  h3 {
+    text-align: right;
+  }
+}
+
+.container { 
+  padding: 4em; 
+  margin: auto;
+  width: 75%;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border: 1px solid #cbcbcb;
+  width: 100%;
+  table-layout: fixed;
+
+  thead {
+    background-color: $gray;
+    color: #000;
+    text-align: center;
+    vertical-align: bottom;
+  }
+
+  td, th {
+    border-left: 1px solid #cbcbcb;
+    border-width: 0 0 0 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible; 
+    padding: 0.5em 1em; 
+    word-break: break-all;
+    &:first-child {
+      border-left-width: 0;
+    }
+    &.actions {
+      text-align: center;
+      width: 10% !important;
+    }
+  }
+
+  td { 
+    a { display: block }
+    &:last-child a { display: inline-block }
+  }
+
+  tbody tr {
+    cursor: pointer;
+    &:hover { border: 1.5px solid $dark-gray; }
+    &:nth-child(even) { background-color: $light-gray; }
+  }
+}
+
+.section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toast {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  p {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    &.notice { 
+      border: 1px solid green;
+      color: green;
+    }
+    &.alert { 
+      border: 1px solid red;
+      color: red;
+    }
+  }
+}

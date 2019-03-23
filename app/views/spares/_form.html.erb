@@ -1,0 +1,65 @@
+<%= form_with(model: spare, local: true, class: 'single', id: 'spare_form') do |form| %>
+  <% if spare.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(spare.errors.count, "error") %> prohibited this spare from being saved:</h2>
+
+      <ul>
+      <% spare.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <h2><%= title %></h2>
+
+  <span>
+    <%= form.label :item_type, class: 'label' %>
+    <%= form.text_field :item_type, class: 'value' %>
+  </span>
+
+  <span>
+    <%= form.label :description, class: 'label' %>
+    <%= form.text_field :description, class: 'value' %>
+  </span>
+
+  <span>
+    <%= form.label :stock, class: 'label' %>
+    <%= form.text_field :stock, class: 'value' %>
+  </span>
+
+  <span>
+    <%= form.label :date_delivered, class: 'label' %>
+    <%= form.text_field :date_delivered, class: 'value' %>
+  </span>
+
+  <span>
+    <%= form.label :date_warranty, class: 'label' %>
+    <%= form.text_field :date_warranty, class: 'value' %>
+  </span>
+
+  <span>
+    <%= form.label :balance, class: 'label' %>
+    <%= form.text_field :balance, class: 'value' %>
+  </span>
+
+  <span>
+    <%= form.label :category, class: 'label' %>
+     <%= form.select :category, Server::SERVER_LIST.collect{|i| i}, class: 'value'%>
+  </span>
+
+
+  <h3>
+    <%= link_to 'Back', spares_path %> |
+    <% if action_name == "edit"%>
+      <%= link_to 'New', new_spare_path %> <%= fa_icon("plus") %> |
+    <% end %>
+    <%= link_to 'Save', "", onclick: "document.getElementById('spare_form').submit()" %> <%= fa_icon("save") %>
+  </h3>
+<% end %>
+  
+<script>
+  document.addEventListener('turbolinks:load', function () {
+    flatpickr('#spare_date_delivered', { dateFormat: "M-d-Y" });
+    flatpickr('#spare_date_warranty', {dateFormat: "M-d-Y"});
+  })
+</script>
